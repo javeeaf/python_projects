@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}E-Commerce Store{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="{{ url_for('home') }}" class="nav-brand">Javee Mart.</a>
+
+        <form action="{{ url_for('home') }}" method="GET" class="search-form">
+            <input type="text" name="search" placeholder="Search products..."
+                value="{{ current_search if current_search else '' }}" class="search-input">
+            <button type="submit" class="search-btn">🔍</button>
+        </form>
+
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">Catalog</a>
+
+            {% if session.get('user_id') %}
+            {% if session.get('is_admin') %}
+            <a href="{{ url_for('admin_dashboard') }}" style="color: var(--accent);">Admin Panel</a>
+            {% endif %}
+            <a href="{{ url_for('view_cart') }}" class="cart-link">
+                🛒 Cart
+                {% if cart_count > 0 %}
+                <span class="cart-badge">{{ cart_count }}</span>
+                {% endif %}
+            </a>
+            <a href="{{ url_for('logout') }}">Log Out ({{ session.get('username') }})</a>
+            {% else %}
+            <a href="{{ url_for('login') }}">Sign In</a>
+            <a href="{{ url_for('register') }}">Create Account</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul class="flash-messages">
+            {% for category, message in messages %}
+            <li class="flash-message {{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+</body>
+
+</html>

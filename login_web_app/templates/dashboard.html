@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Application</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container dashboard-container">
+        <div class="dashboard-icon">✨</div>
+        <h1>Welcome, {{ username }}!</h1>
+        <p class="subtitle">You have successfully logged in to your secure account.</p>
+
+        <div
+            style="background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 8px; margin: 2rem 0; text-align: left;">
+            <p style="margin-bottom: 0.5rem;"><strong>Account Status:</strong> Active</p>
+            <p style="margin-bottom: 0.5rem;"><strong>Security:</strong> Protected via SQLite & Password Hashing</p>
+            <p><strong>Framework:</strong> Python + Flask</p>
+        </div>
+
+        <a href="{{ url_for('logout') }}" style="text-decoration: none;">
+            <button class="btn secondary">Log Out</button>
+        </a>
+    </div>
+</body>
+
+</html>

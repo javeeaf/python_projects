@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Store | Javee Mart{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Explore the Collection</h1>
+    <p>Find exactamente what you need.</p>
+</div>
+
+<div class="store-layout" style="display: flex; gap: 2rem;">
+    <!-- Sidebar for Categories -->
+    <aside style="width: 250px; flex-shrink: 0;">
+        <div
+            style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.5rem; position: sticky; top: 100px;">
+            <h3
+                style="margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 2px solid var(--card-border); padding-bottom: 0.5rem;">
+                Categories</h3>
+            <ul style="list-style: none;">
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="{{ url_for('home') }}" class="{% if not current_category %}active-category{% endif %}"
+                        style="text-decoration: none; font-weight: 500; color: var(--text-secondary);">All Products</a>
+                </li>
+                {% for cat in categories %}
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="{{ url_for('home', category=cat) }}"
+                        class="{% if current_category == cat %}active-category{% endif %}"
+                        style="text-decoration: none; font-weight: 500; color: var(--text-secondary); transition: color 0.3s;">{{
+                        cat }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Product Grid -->
+    <div style="flex: 1;">
+        {% if products|length == 0 %}
+        <div
+            style="text-align: center; padding: 3rem; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border);">
+            <h2>No products found</h2>
+            <p style="color: var(--text-secondary); margin-top: 0.5rem;">Try adjusting your search or category filter.
+            </p>
+            <a href="{{ url_for('home') }}" class="btn" style="margin-top: 1.5rem; max-width: 200px;">Clear Filters</a>
+        </div>
+        {% else %}
+        <div class="product-grid">
+            {% for product in products %}
+            <div class="product-card">
+                <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-image">
+                <div class="product-info">
+                    <a href="{{ url_for('product_detail', product_id=product.id) }}" class="product-title">{{
+                        product.name
+                        }}</a>
+                    <div class="product-price">{{ "%.2f"|format(product.price) }}</div>
+                    <p class="product-desc">{{ product.description }}</p>
+
+                    <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST">
+                        <button type="submit" class="btn">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

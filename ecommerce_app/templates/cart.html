@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Shopping Cart | NexusTech{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Your Shopping Cart</h1>
+    <p>Review your items before checkout.</p>
+</div>
+
+<div class="cart-container">
+    {% if cart_items %}
+    {% for item in cart_items %}
+    <div class="cart-item">
+        <img src="{{ item.image_url }}" alt="{{ item.name }}" class="cart-item-img">
+        <div class="cart-item-info">
+            <div class="cart-item-title">{{ item.name }}</div>
+            <div class="cart-item-price">₹{{ "%.2f"|format(item.price) }} <small>(x{{ item.quantity }})</small></div>
+        </div>
+
+        <div class="cart-item-actions">
+            <form action="{{ url_for('remove_from_cart', cart_id=item.cart_id) }}" method="POST">
+                <button type="submit" class="btn danger" style="padding: 0.5rem 1rem;">Remove</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="cart-summary">
+        <div class="cart-total">Total: ₹{{ "%.2f"|format(total) }}</div>
+        <form action="{{ url_for('checkout') }}" method="POST">
+            <button type="submit" class="btn" style="font-size: 1.25rem;">Proceed to Checkout</button>
+        </form>
+    </div>
+    {% else %}
+    <div style="text-align: center; padding: 2rem 0;">
+        <h2 style="margin-bottom: 1rem;">Your cart is empty.</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Looks like you haven't added anything to your cart
+            yet.</p>
+        <a href="{{ url_for('home') }}" class="btn" style="max-width: 250px;">Start Shopping</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

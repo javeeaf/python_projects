@@ -1,0 +1,77 @@
+#amazon-subnav {
+    background-color: var(--amazon-blue-light);
+    color: var(--amazon-white);
+}
+
+.subnav-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 39px;
+    overflow: hidden;
+}
+
+.subnav-left,
+.subnav-right {
+    display: flex;
+    align-items: center;
+}
+
+.subnav-item {
+    color: var(--amazon-white);
+    padding: 8px 9px;
+    margin: 2px 0 2px 2px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+    white-space: nowrap;
+}
+
+.subnav-item:hover {
+    text-decoration: none;
+    border: 1px solid var(--amazon-white);
+}
+
+.menu-all {
+    font-weight: 700;
+    padding: 8px 10px;
+}
+
+.menu-icon {
+    font-size: 18px;
+    margin-right: 4px;
+}
+
+.dropdown-icon {
+    font-size: 16px;
+    color: #a7acb2;
+}
+
+.prm-img {
+    padding: 0;
+}
+
+.prm-img:hover {
+    border: 1px solid transparent;
+    /* No border hover effect for the ad usually */
+}
+
+.prm-img img {
+    max-height: 39px;
+    object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+    .subnav-hidden {
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .subnav-right {
+        display: none;
+    }
+}

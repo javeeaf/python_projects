@@ -1,0 +1,4 @@
+/* Append to style.css to handle active states without inline jinja */
+.active-category {
+    color: var(--accent) !important;
+}
