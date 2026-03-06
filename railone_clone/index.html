@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>RailOne - Indian Railways</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Top App Bar -->
+        <header class="top-bar">
+            <div class="user-greeting">
+                <div class="avatar">
+                    <img src="https://ui-avatars.com/api/?name=User&background=fff&color=004182" alt="User Avatar">
+                </div>
+                <div class="greeting-text">
+                    <span class="greeting">Good Morning,</span>
+                    <span class="username">Guest User <span
+                            class="material-icons-outlined verified-icon">verified</span></span>
+                </div>
+            </div>
+            <div class="top-actions">
+                <button class="icon-btn search-btn">
+                    <span class="material-icons-outlined">search</span>
+                </button>
+                <button class="icon-btn notification-btn">
+                    <span class="material-icons-outlined">notifications</span>
+                    <span class="badge">2</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Scrollable Content -->
+        <main class="main-content" id="main-content">
+            <!-- Home View -->
+            <div id="view-home" class="view active">
+
+                <!-- Quick PNR / Upcoming Journey Hero -->
+                <section class="hero-section">
+                    <div class="upcoming-journey-card glass-card">
+                        <div class="journey-header">
+                            <div class="train-details">
+                                <span class="train-number">12952</span>
+                                <span class="train-name">Mumbai Rajdhani</span>
+                            </div>
+                            <span class="status-badge conf">CNF</span>
+                        </div>
+                        <div class="journey-route">
+                            <div class="station">
+                                <span class="time">16:30</span>
+                                <span class="code">NDLS</span>
+                                <span class="date">Tomorrow</span>
+                            </div>
+                            <div class="route-line">
+                                <span class="duration">15h 20m</span>
+                                <div class="line">
+                                    <span class="material-icons-outlined train-icon">train</span>
+                                </div>
+                            </div>
+                            <div class="station end">
+                                <span class="time">08:50</span>
+                                <span class="code">MMCT</span>
+                                <span class="date">28 Aug</span>
+                            </div>
+                        </div>
+                        <div class="journey-footer">
+                            <div class="pnr">PNR: 2435678910</div>
+                            <button class="btn btn-primary-light btn-sm">Track</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Core Services Grid -->
+                <section class="services-section">
+                    <h2 class="section-title">Core Services</h2>
+                    <div class="services-grid">
+                        <div class="service-card" onclick="switchView('view-booking')">
+                            <div class="service-icon-wrapper bg-blue">
+                                <span class="material-icons-outlined text-blue">confirmation_number</span>
+                            </div>
+                            <span class="service-name">Book Ticket</span>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon-wrapper bg-orange">
+                                <span class="material-icons-outlined text-orange">directions_transit</span>
+                            </div>
+                            <span class="service-name">Running Status</span>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon-wrapper bg-green">
+                                <span class="material-icons-outlined text-green">receipt_long</span>
+                            </div>
+                            <span class="service-name">PNR Enquiry</span>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon-wrapper bg-red">
+                                <span class="material-icons-outlined text-red">restaurant_menu</span>
+                            </div>
+                            <span class="service-name">E-Catering</span>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon-wrapper bg-purple">
+                                <span class="material-icons-outlined text-purple">support_agent</span>
+                            </div>
+                            <span class="service-name">Rail Madad</span>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon-wrapper bg-teal">
+                                <span class="material-icons-outlined text-teal">hotel</span>
+                            </div>
+                            <span class="service-name">Retiring Room</span>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon-wrapper bg-pink">
+                                <span class="material-icons-outlined text-pink">tour</span>
+                            </div>
+                            <span class="service-name">Tourism</span>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon-wrapper bg-gray">
+                                <span class="material-icons-outlined text-gray">wallet</span>
+                            </div>
+                            <span class="service-name">R-Wallet</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Promotional Banners -->
+                <section class="promo-section">
+                    <div class="promo-banner">
+                        <div class="promo-text">
+                            <h3>Save time, book faster!</h3>
+                            <p>Link your Aadhar for 12 tickets per month.</p>
+                        </div>
+                        <div class="promo-image">
+                            <span class="material-icons-outlined"
+                                style="font-size: 48px; color: #fff; opacity: 0.8">speed</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Booking View -->
+            <div id="view-booking" class="view">
+                <div class="view-header">
+                    <h2>Book Ticket</h2>
+                </div>
+                <div class="booking-form-wrapper">
+                    <div class="station-selector">
+                        <div class="input-group">
+                            <span class="material-icons-outlined icon text-blue">trip_origin</span>
+                            <div class="input-field">
+                                <label>From</label>
+                                <input type="text" value="New Delhi (NDLS)" placeholder="Source Station">
+                            </div>
+                        </div>
+
+                        <div class="swap-btn-wrapper">
+                            <button class="swap-btn">
+                                <span class="material-icons">swap_vert</span>
+                            </button>
+                        </div>
+
+                        <div class="input-group">
+                            <span class="material-icons-outlined icon text-orange">location_on</span>
+                            <div class="input-field">
+                                <label>To</label>
+                                <input type="text" value="Mumbai Central (MMCT)" placeholder="Destination Station">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="date-quota-selector">
+                        <div class="input-group split">
+                            <span class="material-icons-outlined icon">calendar_month</span>
+                            <div class="input-field">
+                                <label>Date</label>
+                                <input type="text" value="Tomorrow, 28 Aug" readonly>
+                            </div>
+                        </div>
+                        <div class="input-group split half">
+                            <div class="input-field">
+                                <label>Quota</label>
+                                <select>
+                                    <option>General</option>
+                                    <option>Tatkal</option>
+                                    <option>Ladies</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-block search-trains-btn">Search Trains</button>
+                </div>
+            </div>
+
+            <!-- Wallet View -->
+            <div id="view-wallet" class="view">
+                <div class="view-header">
+                    <h2>R-Wallet</h2>
+                </div>
+                <div class="wallet-card text-center">
+                    <span class="material-icons-outlined wallet-icon"
+                        style="font-size: 64px; margin-bottom: 10px; color: var(--primary);">account_balance_wallet</span>
+                    <h3 style="margin-top: 10px;">Balance: ₹ 1,250.00</h3>
+                    <p class="text-dim" style="margin-bottom: 20px; font-size: 14px;">Use R-Wallet for instant refunds
+                        and faster checkout.</p>
+                    <button class="btn btn-primary"
+                        style="margin: 0 auto; display: block; width: fit-content; padding: 10px 30px;">Top Up</button>
+                </div>
+            </div>
+
+            <!-- Profile View -->
+            <div id="view-profile" class="view">
+                <div class="view-header">
+                    <h2>My Account</h2>
+                </div>
+                <div class="menu-list">
+                    <div class="menu-item">
+                        <span class="material-icons-outlined">person</span>
+                        <span>Personal Details</span>
+                        <span class="material-icons-outlined right">chevron_right</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="material-icons-outlined">history</span>
+                        <span>My Bookings</span>
+                        <span class="material-icons-outlined right">chevron_right</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="material-icons-outlined">settings</span>
+                        <span>Settings</span>
+                        <span class="material-icons-outlined right">chevron_right</span>
+                    </div>
+                    <div class="menu-item text-red" style="margin-top: 20px;">
+                        <span class="material-icons-outlined">logout</span>
+                        <span>Logout</span>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" onclick="switchView('view-home')">
+                <span class="material-icons-outlined icon">home</span>
+                <span class="label">Home</span>
+            </button>
+            <button class="nav-item" onclick="switchView('view-booking')">
+                <span class="material-icons-outlined icon">test</span>
+                <span class="label">Bookings</span>
+            </button>
+            <div class="nav-fab-wrapper">
+                <button class="nav-fab shadow" onclick="switchView('view-home')">
+                    <span class="material-icons text-white">qr_code_scanner</span>
+                </button>
+            </div>
+            <button class="nav-item" onclick="switchView('view-wallet')">
+                <span class="material-icons-outlined icon">account_balance_wallet</span>
+                <span class="label">Wallet</span>
+            </button>
+            <button class="nav-item" onclick="switchView('view-profile')">
+                <span class="material-icons-outlined icon">person</span>
+                <span class="label">Profile</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
